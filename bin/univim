@@ -1,0 +1,48 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]; then
+  echo "USAGE: univim [action]"
+  echo "action:"
+  echo "  play"
+  echo "  find"
+  echo "  menu MenuName:row"
+  exit 1
+fi
+
+ACTION=$1
+echo "action: ${ACTION}"
+
+if [ "play" = "${ACTION}" ]; then
+  COMMAND="keystroke \"p\" using {command down}"
+elif [ "find" = "${ACTION}" ]; then
+  COMMAND="keystroke \"f\" using {command down}"
+  COMMAND="
+    keystroke \"5\" using {command down}
+    keystroke \"f\" using {command down}
+  "
+elif [ "menu" = "${ACTION}" ]; then
+  MENUNAME=$2
+  echo "menuname: ${MENUNAME}"
+  COMMAND="
+    key code {44} using {shift down, command down}
+    keystroke \"${MENUNAME}\"
+    delay 0.5
+    key code {125}
+    key code {36}
+  "
+else
+  COMMAND=""
+fi
+
+echo "command: ${COMMAND}"
+
+SCRIPT="
+  tell application \"Unity\" to activate
+  tell application \"System Events\"
+    tell process \"Unity\"
+      ${COMMAND}
+    end tell
+  end tell
+"
+osascript -e "${SCRIPT}"
+
