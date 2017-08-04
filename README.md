@@ -1,4 +1,4 @@
-univim.vim
+univim
 =================
 
 Operate Unity from Vim
@@ -26,7 +26,7 @@ Operate Unity from Vim
 ## Install
 
 ```
-NeoBundle 'zebult/univim.vim'
+NeoBundle 'zebult/univim'
 ```
 
 ## Key mappings
