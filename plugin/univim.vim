@@ -15,6 +15,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 command! -nargs=0 UnivimPlay :call univim#play()
+command! -nargs=0 UnivimBuild :call univim#build()
 command! -nargs=0 UnivimFind :call univim#find()
 command! -nargs=1 UnivimMenu :call univim#menu(<q-args>)
 

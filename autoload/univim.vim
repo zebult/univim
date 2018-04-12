@@ -27,6 +27,10 @@ function! univim#play() "{{{
   call s:execute_univim_script('play', '')
 endfunction "}}}
 
+function! univim#build() "{{{
+  call s:execute_univim_script('build', '')
+endfunction "}}}
+
 function! univim#find() "{{{
   call s:execute_univim_script('find', '')
 endfunction "}}}

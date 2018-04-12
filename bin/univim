@@ -4,6 +4,7 @@ if [ $# -lt 1 ]; then
   echo "USAGE: univim [action]"
   echo "action:"
   echo "  play"
+  echo "  build"
   echo "  find"
   echo "  menu MenuName:row"
   exit 1
@@ -13,7 +14,15 @@ ACTION=$1
 echo "action: ${ACTION}"
 
 if [ "play" = "${ACTION}" ]; then
-  COMMAND="keystroke \"p\" using {command down}"
+  COMMAND="
+    delay 0.1
+    keystroke \"p\" using {command down}
+  "
+elif [ "build" = "${ACTION}" ]; then
+  COMMAND="
+    delay 0.1
+    keystroke tab using {command down}
+  "
 elif [ "find" = "${ACTION}" ]; then
   COMMAND="keystroke \"f\" using {command down}"
   COMMAND="
